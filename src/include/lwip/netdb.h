@@ -128,6 +128,13 @@ int lwip_getaddrinfo(const char *nodename,
        const struct addrinfo *hints,
        struct addrinfo **res);
 
+#if LWIP_IPV6
+void lwip_sortdestinationaddresses(ip_addr_t dest_addr_list[],
+       const u8_t dest_addr_list_length,
+       ip_addr_t *cand_source_addr_list[],
+       const u8_t cand_source_addr_list_length);
+#endif
+
 #if LWIP_COMPAT_SOCKETS
 /** @ingroup netdbapi */
 #define gethostbyname(name) lwip_gethostbyname(name)
